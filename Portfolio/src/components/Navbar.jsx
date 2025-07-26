@@ -12,7 +12,7 @@ function Navbar() {
       <nav className="px-4 py-4">
         <div className="flex items-center justify-between py-4 px-4 mx-auto max-w-screen-xl">
           <Link to="/" className="text-xl font-bold text-gray-800">
-            Logo
+            <span className="text-indigo-500">{`<Ankit/>`}</span>
           </Link>
 
           {/* Hamburger button (mobile only) */}
