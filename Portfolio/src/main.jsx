@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import { Skills, About, Home} from './index'
+import { Skills, About, Home, Projects} from './index'
 import Layout from './Layout.jsx'
 
 const router = createBrowserRouter(
@@ -11,6 +11,7 @@ const router = createBrowserRouter(
       <Route path = '' element = {<Home/>}/>
       <Route path = 'skills' element = {<Skills/>}/>
       <Route path = 'about' element = {<About/>}/>
+      <Route path = 'projects' element = {<Projects/>} />
     </Route>
 
   )

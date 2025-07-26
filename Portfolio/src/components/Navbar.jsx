@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
-import { FiMenu, FiX } from "react-icons/fi"; // Menu icons
+import { FiMenu, FiX } from "react-icons/fi";
+import { FaLinkedin } from "react-icons/fa6";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,15 +25,19 @@ function Navbar() {
 
           {/* Navigation Links - Hidden on small, visible on md+ */}
           <ul className="hidden md:flex gap-x-4 items-center">
-            {["/", "/skills", "/about"].map((path, i) => (
+            {["/", "/skills", "/about", "/projects"].map((path, i) => (
               <li key={i}>
                 <NavLink
                   to={path}
                   className={({ isActive }) =>
-                    `${isActive ? "text-orange-800" : "text-gray-800"} font-medium`
+                    `${
+                      isActive ? "text-orange-800" : "text-gray-800"
+                    } font-medium`
                   }
                 >
-                  {path === "/" ? "Home" : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+                  {path === "/"
+                    ? "Home"
+                    : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
                 </NavLink>
               </li>
             ))}
@@ -41,16 +46,9 @@ function Navbar() {
           {/* Right icons/buttons */}
           <div className="hidden md:flex items-center gap-x-3">
             <a
-              href="https://github.com/ankitkr20"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub className="text-2xl text-gray-800 hover:text-orange-800 transition-colors duration-300" />
-            </a>
-            <a
               href="/cv.pdf"
               download
-              className="bg-indigo-500 hover:bg-indigo-600 transition-opacity duration-200 border-white shadow-2xl rounded py-1 px-2 text-white text-sm"
+              className="bg-indigo-500 hover:bg-indigo-600 transition-opacity duration-200 border-white shadow-2xl rounded py-2 px-2 text-white text-sm"
             >
               Download CV
             </a>
@@ -60,26 +58,23 @@ function Navbar() {
         {/* Mobile menu dropdown */}
         {isOpen && (
           <div className="md:hidden mt-4 space-y-3">
-            {["/", "/skills", "/about"].map((path, i) => (
+            {["/", "/skills", "/about", "/projects"].map((path, i) => (
               <NavLink
                 key={i}
                 to={path}
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
-                  `${isActive ? "text-orange-800" : "text-gray-800"} block font-medium`
+                  `${
+                    isActive ? "text-orange-800" : "text-gray-800"
+                  } block font-medium`
                 }
               >
-                {path === "/" ? "Home" : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+                {path === "/"
+                  ? "Home"
+                  : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
               </NavLink>
             ))}
             <div className="flex items-center gap-x-3 pt-2">
-              <a
-                href="https://github.com/ankitkr20"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithub className="text-2xl text-gray-800 hover:text-orange-800" />
-              </a>
               <a
                 href="/cv.pdf"
                 download
@@ -90,6 +85,7 @@ function Navbar() {
             </div>
           </div>
         )}
+        
       </nav>
     </header>
   );
