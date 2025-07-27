@@ -1,115 +1,173 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
+import Tilt from "./Tilt.jsx";
+import {Typewriter} from 'react-simple-typewriter'
 
 function Home() {
   return (
     <>
+    <div className="fullscreen-gradient">
       {/* Hero Section */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-40 mx-auto max-w-screen-xl px-4 min-h-screen">
-
-        <img
-          className="rounded-full object-cover w-48 h-48 md:w-72 md:h-72 shadow-lg border border-white"
-          src="https://media.istockphoto.com/id/1090878494/photo/close-up-portrait-of-young-smiling-handsome-man-in-blue-polo-shirt-isolated-on-gray-background.jpg?s=612x612&w=0&k=20&c=AycQ2obu8sgJxWAJgYBbYR6jeRB9Bhs1JZBXzSgL6LE="
-          alt="Ankit"
-        />
+        <Tilt>
+          <img
+            className="rounded-full object-cover w-48 h-48 md:w-72 md:h-72 border-4 border-white shadow-lg hover:shadow-indigo-500 transition-shadow duration-500 hover:scale-105 transform"
+            src="https://media.istockphoto.com/id/1090878494/photo/close-up-portrait-of-young-smiling-handsome-man-in-blue-polo-shirt-isolated-on-gray-background.jpg?s=612x612&w=0&k=20&c=AycQ2obu8sgJxWAJgYBbYR6jeRB9Bhs1JZBXzSgL6LE="
+            alt="Ankit"
+          />
+        </Tilt>
         <div className="text-center md:text-left text-2xl md:text-4xl font-bold">
           Hi! I am Ankit
           <br />
-          <span className="text-indigo-600">a Full Stack Developer</span>
+          <span className="text-indigo-600 ">
+            <Typewriter
+              words={["a Full Stack Devloper","a Graphich Designer"]}
+              loop
+              typeSpeed = {70}
+              deleteSpeed = {30}
+              delaySpeed = {1000}
+            />
+            </span>
           <p className="text-base md:text-xl font-normal py-2">
             I build fast and scalable web apps with modern tech
           </p>
           <div className="flex justify-center md:justify-start gap-4 mt-2">
-            <a
-              href="https://www.linkedin.com/in/ankit-kumar-368a00222/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin className="text-2xl text-gray-800" />
-            </a>
-            <a
-              href="https://github.com/ankitkr20"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub className="text-2xl text-gray-800" />
-            </a>
+            <div className="animate-pulse ">
+              <a
+                href="https://www.linkedin.com/in/ankit-kumar-368a00222/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin className="text-2xl  text-gray-800" />
+              </a>
+            </div>
+            <div className="animate-pulse rounded">
+              <a
+                href="https://github.com/ankitkr20"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub className="text-2xl text-gray-800" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      <h1 className="text-2xl md:text-3xl font-semibold text-indigo-500 text-center mb-1">
+      <h1 className="text-2xl md:text-2xl font-semibold text-indigo-600 text-center mb-1">
         SKILLS
       </h1>
       <div className="flex justify-center">
-      <div className="md:w-20 h-1 mb-2 bg-indigo-500 rounded-full"></div>
+        <div className="md:w-15 h-1 mb-2 bg-indigo-500 rounded-full"></div>
       </div>
-      <p className="text-center font-semibold mb-4">A collection of my Technical skills and expertise honed through various projects and experiences</p>
+      <p className="text-center font-semibold mb-4">
+        A collection of my Technical skills and expertise honed through various
+        projects and experiences
+      </p>
 
-      <div className="flex flex-col md:flex-row justify-center items-start gap-6 p-4">
+      <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 md:gap-30 p-4">
+        {/* Card 1 */}
+        <Tilt>
+          <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white hover:shadow-indigo-400 transition-shadow duration-300">
+            <p className="text-center font-bold pb-1 text-lg">FRONTEND</p>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { src: "./src/logo/react.png", label: "React" },
+                { src: "./src/logo/css.png", label: "CSS" },
+                { src: "./src/logo/html.png", label: "HTML" },
+                { src: "./src/logo/javascript.png", label: "Javascript" },
+                { src: "./src/logo/redux.png", label: "Redux" },
+                { src: "./src/logo/tailwind.png", label: "Tailwind" },
+              ].map(({ src, label }) => (
+                <div
+                  key={label}
+                  className="transition-transform duration-300 hover:scale-110 cursor-pointer rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center p-1 space-x-2"
+                >
+                  <img src={src} alt={label} className="w-6 h-6" />
+                  <span className="text-sm font-medium">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Tilt>
 
+        {/* Card 2 */}
+        <Tilt>
+          <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white hover:shadow-indigo-400 transition-shadow duration-300">
+            <p className="text-center font-bold pb-1 text-lg">BACKEND</p>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { src: "./src/logo/nodejs.png", label: "Node JS" },
+                { src: "./src/logo/express.png", label: "Express JS" },
+                { src: "./src/logo/mongodb.png", label: "Mongo DB" },
+                { src: "./src/logo/mysql.png", label: "My SQL" },
+              ].map(({ src, label }) => (
+                <div
+                  key={label}
+                  className="transition-transform duration-300 hover:scale-110 rounded-xl border-2 border-indigo-200 shadow-2xl flex p-1 items-center space-x-2"
+                >
+                  <img src={src} alt={label} className="w-6 h-6" />
+                  <span className="font-medium text-sm">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Tilt>
+        </div>
 
-      {/* Card 1 */}
-
-      <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white">
-      <p className="text-center font-bold pb-1 text-lg">FRONTEND</p>
-        <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center p-1 space-x-2">
-            <img src="./src/logo/react.png" alt="React" className="w-6 h-6" />
-            <span className="text-sm font-medium">React</span>
+        {/* Card 3 */}
+        <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 md:gap-30 p-4">
+        <Tilt>
+          <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white hover:shadow-indigo-400 transition-shadow duration-300">
+            <p className="text-center font-bold pb-1 text-lg">TOOLS</p>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { src: "./src/logo/vscode.png", label: "VS Code" },
+                { src: "./src/logo/git.png", label: "Git" },
+                { src: "./src/logo/github.png", label: "GitHub" },
+                { src: "./src/logo/mysql.png", label: "MySQL" },
+              ].map(({ src, label }) => (
+                <div
+                  key={label}
+                  className="transition-transform duration-300 hover:scale-110 rounded-xl border-2 border-indigo-200 shadow-2xl flex p-1 items-center space-x-2"
+                >
+                  <img src={src} alt={label} className="w-6 h-6" />
+                  <span className="text-sm font-medium ">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center p-1 space-x-2">
-            <img src="./src/logo/css.png" alt="React" className="w-6 h-6" />
-            <span className="text-sm font-medium">CSS</span>
-          </div>
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center p-1 space-x-2">
-            <img src="./src/logo/html.png" alt="HTML" className="w-6 h-6" />
-            <span className="text-sm font-medium">HTML</span>
-          </div>
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center p-1 space-x-2">
-            <img src="./src/logo/javascript.png" alt="Javascript" className="w-6 h-6" />
-            <span className="text-sm font-medium">Javascript</span>
-          </div>
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center p-1 space-x-2">
-            <img src="./src/logo/redux.png" alt="Redux" className="w-6 h-6" />
-            <span className="text-sm font-medium">Redux</span>
-          </div>
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center space-x-2">
-            <img src="./src/logo/tailwind.png" alt="Tailwind" className="w-6 h-6" />
-            <span className="text-sm font-medium">Tailwind</span>
-          </div>
+        </Tilt>
+        {/* Card 4 */}
+        <Tilt>
+        <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white hover:shadow-indigo-400 transition-shadow duration-300">
+          <p className="text-center font-bold pb-1 text-lg">LANGUAGES</p>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { src: "./src/logo/c++.png", label: "C++" },
+              { src: "./src/logo/java.png", label: "Java" },
+              { src: "./src/logo/python.png", label: "Python" },
+              { src: "./src/logo/javascript.png", label: "JavaScript" },
+            ].map(({ src,label }) => (
+              <div
+                key={label}
+                className="transition-transform duration-300 hover:scale-110 rounded-xl border-2 border-indigo-200 shadow-2xl flex p-1 items-center space-x-2"
+              >
+                <img src={src} alt={label} className="w-6 h-6" />
+                <span className="text-sm font-medium">{label}</span>
+              </div>
+            ))}
         </div>
       </div>
-
-      {/* Card 2 */}
-
-      <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white">
-        <p className="text-center font-bold pb-1 text-lg">BACKEND</p>
-        <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center space-x-2">
-          <img src="./src/logo/nodejs.png" alt="Node JS" className="w-6 h-6"/>
-          <span className="text-sm font-medium">Node JS</span>
-          </div>
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center space-x-2">
-          <img src="./src/logo/express.png" alt="Express" className="w-6 h-6"/>
-          <span className="text-sm font-medium">Express</span>
-          </div>
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center space-x-2">
-          <img src="./src/logo/mongodb.png" alt="MongoDB" className="w-6 h-6"/>
-          <span className="text-sm font-medium">MongoDB</span>
-          </div>
-          <div className="rounded-xl border-2 border-indigo-200 shadow-2xl flex items-center space-x-2">
-          <img src="./src/logo/mysql.png" alt="MySQL" className="w-6 h-6"/>
-          <span className="text-sm font-medium">MySQL</span>
-          </div>
-        </div>
+      </Tilt>
       </div>
-
-      {/* Card 3 */}
-
-      {/* Card 4 */}
-
-
+      
+      <h1 className="text-2xl text-indigo-600 text-center pt-4 font-semibold">
+        PROJECTS
+      </h1>
+      <div className="flex justify-center pt-1">
+        <div className="bg-indigo-600 md:w-25 h-1 rounded-lg"></div>
+      </div>
       </div>
     </>
   );

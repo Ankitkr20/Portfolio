@@ -11,5 +11,5 @@ export{
     About,
     Navbar,
     Footer,
-    Projects
+    Projects,
 }   
