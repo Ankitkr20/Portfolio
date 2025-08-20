@@ -192,7 +192,7 @@ function Home() {
             src="https://media.istockphoto.com/id/1090878494/photo/close-up-portrait-of-young-smiling-handsome-man-in-blue-polo-shirt-isolated-on-gray-background.jpg?s=612x612&w=0&k=20&c=AycQ2obu8sgJxWAJgYBbYR6jeRB9Bhs1JZBXzSgL6LE="
             alt="Ankit"
           />
-          <div style={{fontFamily: 'Raleway, sans-serif'}} className="flex text-center w-full md:w-100">
+          <div style={{fontFamily: 'Raleway, sans-serif'}} className="flex text-center w-full md:w-100 pb-5">
             <p className="text-lg font-medium">
               Hi! I'm Ankit, a passionate Full Stack Developer who loves
               building modern, responsive, and scalable web applications. I

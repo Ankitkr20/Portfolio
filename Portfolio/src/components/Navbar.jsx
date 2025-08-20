@@ -46,7 +46,7 @@ function Navbar() {
             <a
               href="/cv.pdf"
               download
-              className="bg-indigo-500 hover:bg-indigo-600 animate-bounce  transition-opacity duration-200 border-white shadow-2xl rounded py-2 px-2 text-white text-sm"
+              className="bg-indigo-500 hover:bg-indigo-600 transition-opacity duration-200 border-white shadow-2xl rounded py-2 px-2 text-white text-sm"
             >
               Download CV
             </a>
