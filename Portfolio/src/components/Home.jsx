@@ -3,8 +3,27 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import Tilt from "./Tilt.jsx";
 import { Typewriter } from "react-simple-typewriter";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function Home() {
+  const location = useLocation()
+
+  useEffect(()=>{
+    if(location.hash){
+       const section = document.querySelector(location.hash)
+       if(section){
+        const yOffset = -80;
+        const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        setTimeout(()=>{
+          window.scrollTo({top:y, behavior:"smooth"})
+        },100)
+       }
+    }
+    else{
+      window.scrollTo({top:0,behavior:"smooth"})
+    }
+  },[location])
   return (
     <>
       <div className="fullscreen-gradient min-h-screen">
@@ -37,7 +56,7 @@ function Home() {
             </p>
             {/* Adding Linkedin, Github icons */}
             <div className="flex justify-center md:justify-start gap-4 mt-2">
-              <div className="animate-pulse ">
+              <div >
                 <a
                   href="https://www.linkedin.com/in/ankit-kumar-368a00222/"
                   target="_blank"
@@ -46,7 +65,7 @@ function Home() {
                   <FaLinkedin className="text-2xl  text-gray-800" />
                 </a>
               </div>
-              <div className="animate-pulse rounded">
+              <div className="rounded">
                 <a
                   href="https://github.com/ankitkr20"
                   target="_blank"
@@ -60,7 +79,7 @@ function Home() {
         </div>
 
         {/* Skills Section */}
-
+        <section id="skills"></section>
         <h1 className="text-2xl md:text-2xl font-semibold text-indigo-600 text-center mb-6">
           SKILLS
         </h1>
@@ -76,7 +95,7 @@ function Home() {
           {/* Card 1 */}
           <Tilt>
             <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white hover:shadow-indigo-400 transition-shadow duration-300">
-              <p className="text-center font-bold pb-1 text-lg">FRONTEND</p>
+              <p className="text-center font-bold pb-1 text-lg">WEB DEVELOPMENT</p>
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { src: "./src/logo/react.png", label: "React" },
@@ -85,6 +104,10 @@ function Home() {
                   { src: "./src/logo/javascript.png", label: "Javascript" },
                   { src: "./src/logo/redux.png", label: "Redux" },
                   { src: "./src/logo/tailwind.png", label: "Tailwind" },
+                  { src: "./src/logo/nodejs.png", label: "Node JS" },
+                  { src: "./src/logo/express.png", label: "Express JS" },
+                  { src: "./src/logo/mongodb.png", label: "Mongo DB" },
+                  { src: "./src/logo/Next.js.png", label: "Next Js" },
                 ].map(({ src, label }) => (
                   <div
                     key={label}
@@ -101,13 +124,14 @@ function Home() {
           {/* Card 2 */}
           <Tilt>
             <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white hover:shadow-indigo-400 transition-shadow duration-300">
-              <p className="text-center font-bold pb-1 text-lg">BACKEND</p>
+              <p className="text-center font-bold pb-1 text-lg">DATA SCIENCE</p>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { src: "./src/logo/nodejs.png", label: "Node JS" },
-                  { src: "./src/logo/express.png", label: "Express JS" },
-                  { src: "./src/logo/mongodb.png", label: "Mongo DB" },
-                  { src: "./src/logo/mysql.png", label: "My SQL" },
+                  { src: "./src/logo/Pandas.png", label: "Pandas" },
+                  { src: "./src/logo/NumPy.png", label: "NumPy" },
+                  { src: "./src/logo/Matplotlib.png", label: "Matplotlib" },
+                  { src: "./src/logo/Seaborn.png", label: "Seaborn" },
+                  { src: "./src/logo/Jupyter.png", label: "Jupyter Notebook" },
                 ].map(({ src, label }) => (
                   <div
                     key={label}
@@ -126,13 +150,14 @@ function Home() {
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 md:gap-30 p-4">
           <Tilt>
             <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white hover:shadow-indigo-400 transition-shadow duration-300">
-              <p className="text-center font-bold pb-1 text-lg">TOOLS</p>
+              <p className="text-center font-bold pb-1 text-lg">MACHINE LEARNING</p>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { src: "./src/logo/vscode.png", label: "VS Code" },
-                  { src: "./src/logo/git.png", label: "Git" },
-                  { src: "./src/logo/github.png", label: "GitHub" },
-                  { src: "./src/logo/mysql.png", label: "MySQL" },
+                  { src: "./src/logo/TensorFlow.png", label: "Tensorflow" },
+                  { src: "./src/logo/scikit-learn.png", label: "Scikit-Learn " },
+                  { src: "./src/logo/Keras.png", label: "Keras" },
+                  { label: "CNN" },
+                  { src: "./src/logo/Kaggle.png", label: "Kaggle" },
                 ].map(({ src, label }) => (
                   <div
                     key={label}
@@ -155,6 +180,32 @@ function Home() {
                   { src: "./src/logo/java.png", label: "Java" },
                   { src: "./src/logo/python.png", label: "Python" },
                   { src: "./src/logo/javascript.png", label: "JavaScript" },
+                  { src: "./src/logo/SQL.png", label: "SQL" },
+                ].map(({ src, label }) => (
+                  <div
+                    key={label}
+                    className="transition-transform duration-300 hover:scale-110 rounded-xl border-2 border-indigo-200 shadow-2xl flex p-1 items-center space-x-2"
+                  >
+                    <img src={src} alt={label} className="w-6 h-6" />
+                    <span className="text-sm font-medium">{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Tilt>
+
+          {/* Card 5 */}
+          <Tilt>
+            <div className="bg-white p-4 rounded-lg shadow-xl w-full md:w-80 border-2 border-white hover:shadow-indigo-400 transition-shadow duration-300">
+              <p className="text-center font-bold pb-1 text-lg">TOOLS</p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { src: "./src/logo/Zod.png", label: "Zod" },
+                  { src: "./src/logo/git.png", label: "Git" },
+                  { src: "./src/logo/github.png", label: "GitHub" },
+                  { src: "./src/logo/Docker.png", label: "Docker" },
+                  { src: "./src/logo/Postman.png", label: "Postman" },
+                  { src: "./src/logo/Jupyter.png", label: "Jupyter Notebook" },
                 ].map(({ src, label }) => (
                   <div
                     key={label}
@@ -169,8 +220,14 @@ function Home() {
           </Tilt>
         </div>
 
-        {/* Projects Section */}
+        {/* Education Section */}
+        <section id="education"></section>
+        <h1 className="text-2xl text-indigo-600 text-center mt-6 mb-6 font-semibold">
+          EDUCATION
+        </h1>
 
+        {/* Projects Section */}
+        <section id="projects"></section>
         <h1 className="text-2xl text-indigo-600 text-center mt-6 mb-6 font-semibold">
           PROJECTS
         </h1>
@@ -179,7 +236,7 @@ function Home() {
         </div>
 
         {/* About Section */}
-
+        <section id="about"></section>
         <h1 className="text-2xl text-indigo-600 text-center mt-4 mb-6 font-semibold">
           ABOUT
         </h1>

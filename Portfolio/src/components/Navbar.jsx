@@ -1,19 +1,27 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navItems = [
+    // { name: "Top", path: "/" },
+    { name: "Skills", path: "/#skills" },
+    { name: "Education", path: "/#education"},
+    { name: "Projects", path: "/#projects" },
+    { name: "About", path: "/#about" },
+  ];
+
   return (
     <header className="shadow sticky top-0 z-50 bg-white">
-      <nav className="px-4 py-4">
+      <nav className="px-4 py-2">
         <div className="flex items-center justify-between py-4 px-4 mx-auto max-w-screen-xl">
           <Link to="/" className="text-xl font-bold text-gray-800">
             <span className="text-indigo-500">{`<Ankit/>`}</span>
           </Link>
 
-          {/* Hamburger button (mobile only) */}
+          {/* Hamburger (mobile) */}
           <button
             className="md:hidden text-2xl"
             onClick={() => setIsOpen(!isOpen)}
@@ -21,69 +29,54 @@ function Navbar() {
             {isOpen ? <FiX /> : <FiMenu />}
           </button>
 
-          {/* Navigation Links - Hidden on small, visible on md+ */}
-          <ul className="hidden md:flex gap-x-4 items-center">
-            {["/", "/skills", "/about", "/projects"].map((path, i) => (
-              <li key={i}>
-                <NavLink
-                  to={path}
-                  className={({ isActive }) =>
-                    `${
-                      isActive ? "text-orange-800" : "text-gray-800"
-                    } font-medium`
-                  }
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex gap-x-6 items-center">
+            {navItems.map(({ name, path }) => (
+              <li key={name}>
+                <a
+                  href={path}
+                  className="text-gray-800 hover:text-indigo-500 transition-colors"
                 >
-                  {path === "/"
-                    ? "Home"
-                    : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-                </NavLink>
+                  {name}
+                </a>
               </li>
             ))}
           </ul>
 
-          {/* Right icons/buttons */}
+          {/* CV button */}
           <div className="hidden md:flex items-center gap-x-3">
             <a
               href="/cv.pdf"
               download
-              className="bg-indigo-500 hover:bg-indigo-600 transition-opacity duration-200 border-white shadow-2xl rounded py-2 px-2 text-white text-sm"
+              className="bg-indigo-500 hover:bg-indigo-600 transition duration-200 shadow rounded py-2 px-3 text-white text-sm"
             >
               Download CV
             </a>
           </div>
         </div>
 
-        {/* Mobile menu dropdown */}
+        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-4 space-y-3">
-            {["/", "/skills", "/about", "/projects"].map((path, i) => (
-              <NavLink
-                key={i}
-                to={path}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `${
-                    isActive ? "text-orange-800" : "text-gray-800"
-                  } block font-medium`
-                }
-              >
-                {path === "/"
-                  ? "Home"
-                  : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-              </NavLink>
-            ))}
-            <div className="flex items-center gap-x-3 pt-2">
+            {navItems.map(({ name, path }) => (
               <a
-                href="/cv.pdf"
-                download
-                className="bg-indigo-500 hover:bg-indigo-600 text-white text-sm py-1 px-2 rounded"
+                key={name}
+                href={path}
+                onClick={() => setIsOpen(false)}
+                className="block font-medium text-gray-800 hover:text-indigo-500"
               >
-                Download CV
+                {name}
               </a>
-            </div>
+            ))}
+            <a
+              href="/cv.pdf"
+              download
+              className="block bg-indigo-500 text-white text-sm py-2 px-3 rounded text-center"
+            >
+              Download CV
+            </a>
           </div>
         )}
-        
       </nav>
     </header>
   );
