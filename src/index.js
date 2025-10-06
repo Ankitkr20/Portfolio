@@ -4,6 +4,7 @@ import About from './components/About'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Projects from './components/Projects'
+import Education from './components/Education'
 
 export{
     Home,
@@ -12,4 +13,5 @@ export{
     Navbar,
     Footer,
     Projects,
+    Education
 }   

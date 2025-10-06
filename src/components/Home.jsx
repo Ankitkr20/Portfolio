@@ -10,6 +10,10 @@ function Home() {
   const location = useLocation()
 
   useEffect(()=>{
+    window.scroll(0,0)
+  },[])
+
+  useEffect(()=>{
     if(location.hash){
        const section = document.querySelector(location.hash)
        if(section){
